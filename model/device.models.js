@@ -5,6 +5,7 @@ const Device = model(
   new Schema({
     nama: { type: String, required: true },
     id: { type: Number, unique: true },
+    heart_rate: Number,
   })
 );
 
