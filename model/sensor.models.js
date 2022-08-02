@@ -4,7 +4,7 @@ const Sensor = model(
   "sensor",
   new Schema({
     sapi: Number,
-    heart_rate: { type: String },
+    heart_rate: { type: Number },
     time: Number,
   })
 );

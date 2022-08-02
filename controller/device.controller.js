@@ -52,8 +52,12 @@ const addSensor = async (req, res, next) => {
   const { heart_rate } = req.body;
   const time = Date.now();
 
-  const data = await Sensor.insertMany({ sapi: id, heart_rate: heart_rate, time });
-  await Device.updateOne({ id }, { heart_rate: heart_rate });
+  const data = await Sensor.insertMany({
+    sapi: id,
+    heart_rate: Number(heart_rate),
+    time,
+  });
+  await Device.updateOne({ id }, { heart_rate: Number(heart_rate) });
   res.json({ data });
   next();
 };
