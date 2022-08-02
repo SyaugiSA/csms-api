@@ -50,11 +50,10 @@ const Delete = async (req, res, next) => {
 const addSensor = async (req, res, next) => {
   const { id } = req.params;
   const { heart_rate } = req.body;
-  const hr = Number(heart_rate)
   const time = Date.now();
 
-  const data = await Sensor.insertMany({ sapi: id, heart_rate: hr, time });
-  await Device.updateOne({ id }, { heart_rate: hr });
+  const data = await Sensor.insertMany({ sapi: id, heart_rate, time });
+  await Device.updateOne({ id }, { heart_rate });
   res.json({ data });
   next();
 };
